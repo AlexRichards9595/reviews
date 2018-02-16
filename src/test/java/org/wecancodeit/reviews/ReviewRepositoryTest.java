@@ -1,7 +1,10 @@
 package org.wecancodeit.reviews;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+
+import java.util.Collection;
 
 import org.junit.Test;
 
@@ -12,7 +15,7 @@ public class ReviewRepositoryTest {
 	private long firstReviewId = 23L;
 	private Review firstReview = new Review(firstReviewId, "first review", "review url", "category", "content");
 
-	private long secondReviewId = 23L;
+	private long secondReviewId = 24L;
 	private Review secondReview = new Review(secondReviewId, "second review", "review url", "category", "content");
 
 	@Test
@@ -24,23 +27,23 @@ public class ReviewRepositoryTest {
 		assertThat(result, is(firstReview));
 	}
 
-//	@Test
-//	public void shouldFindSecondCourse() {
-//
-//		underTest = new CourseRepository(firstCourse, secondCourse);
-//
-//		Course result = underTest.findOne(secondCourseId);
-//
-//		assertThat(result, is(secondCourse));
-//	}
-//
-//	@Test
-//	public void shouldFindAll() {
-//		underTest = new CourseRepository(firstCourse, secondCourse); 
-//
-//		Collection<Course> result = underTest.findAll();
-//
-//		assertThat(result, containsInAnyOrder(firstCourse, secondCourse));
-//	}
+	@Test
+	public void shouldFindSecondCourse() {
+
+		underTest = new ReviewRepository(firstReview, secondReview);
+
+		Review result = underTest.findOne(secondReviewId);
+
+		assertThat(result, is(secondReview));
+	}
+
+	@Test
+	public void shouldFindAll() {
+		underTest = new ReviewRepository(firstReview, secondReview); 
+
+		Collection<Review> result = underTest.findAll();
+
+		assertThat(result, containsInAnyOrder(firstReview, secondReview));
+	}
 
 }
