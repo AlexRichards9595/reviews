@@ -10,6 +10,17 @@ import org.springframework.stereotype.Repository;
 public class ReviewRepository {
 
 	Map<Long, Review> reviews = new HashMap<>();
+	
+	public ReviewRepository () {
+		Review fellowship = new Review(1L, "The Fellowship of the Ring", "./images/fellowship.jpg", "movies", "Its a good movie");
+		Review twoTowers = new Review(2L, "The Two Towers", "./images/twoTowers.jpg", "movies", "Its a great movie");
+		Review returnOfTheKing = new Review(3L, "The Return of the King", "./images/returnOfTheKing.jpg", "movies", "It's the best movie");
+		
+		reviews.put(fellowship.getId(), fellowship);
+		reviews.put(twoTowers.getId(), twoTowers);
+		reviews.put(returnOfTheKing.getId(), returnOfTheKing);
+		
+	}
 
 	public ReviewRepository(Review... reviews) {
 		populateReviewsMap(reviews);
@@ -28,5 +39,6 @@ public class ReviewRepository {
 	public Collection<Review> findAll() {
 		return reviews.values();
 	}
+	
 
 }

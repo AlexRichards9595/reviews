@@ -15,7 +15,7 @@ public class ReviewRepositoryTest {
 	private long firstReviewId = 23L;
 	private Review firstReview = new Review(firstReviewId, "first review", "review url", "category", "content");
 
-	private long secondReviewId = 24L;
+	private long secondReviewId = 1L;
 	private Review secondReview = new Review(secondReviewId, "second review", "review url", "category", "content");
 
 	@Test
